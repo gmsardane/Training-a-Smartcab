@@ -35,10 +35,10 @@ class LearningAgent(Agent):
         for waypoint in waypoints:
         	for light in lights:
         		for left in Environment.valid_actions:
-        			for right in Environment.valid_actions:
-        				for oncoming in Environment.valid_actions:
-        					for act in Environment.valid_actions:
-        						self.Qdict[(waypoint,light, left, right, oncoming), act] = 0. 
+        			#for right in Environment.valid_actions:
+        			for oncoming in Environment.valid_actions:
+        				for act in Environment.valid_actions:
+        					self.Qdict[(waypoint,light, left, oncoming), act] = 0. 
         			
         #Counters:
         self.ndeadline = []
@@ -58,7 +58,7 @@ class LearningAgent(Agent):
         deadline = self.env.get_deadline(self)
 
         # TODO: Update state      
-        self.state = (self.next_waypoint, inputs['light'], inputs['left'], inputs['oncoming'],  inputs['right'])#, deadline)
+        self.state = (self.next_waypoint, inputs['light'], inputs['left'], inputs['oncoming'])#,  inputs['right'])#, deadline)
         current_Q = numpy.finfo(numpy.float32).min
 
         # TODO: Select action according to your policy        
