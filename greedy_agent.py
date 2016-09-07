@@ -26,7 +26,7 @@ class LearningAgent(Agent):
         #Qtable parameters
         self.alpha = 0.75   #Learning Rate
         self.gamma = 0.25    #Discounted Reward Factor   
-        #self.epsilon = 0.80  #exploitation-exploration
+        self.epsilon = 0.95  #exploitation-exploration
         
         #Create the Q-table and initialize all to zero:
         self.Qdict = {} #dictionary of states and and possible action, value pairs. Keys are (states), action
@@ -64,8 +64,11 @@ class LearningAgent(Agent):
         # TODO: Select action according to your policy        
         #If all actions have the same Q-vals, choose a random action amongst those that have equal Q's:
         max_qval = max([self.Qdict[(self.state), action] for action in self.env.valid_actions])
-        best_actions = [action for action in self.env.valid_actions if self.Qdict[(self.state), action] == max_qval]
-        action = random.choice(best_actions)
+        if random.random() > self.epsilon:
+            action = random.choice(self.env.valid_actions)
+        else:
+            best_actions = [action for action in self.env.valid_actions if self.Qdict[(self.state), action] == max_qval]
+            action = random.choice(best_actions)
 	
         if self.Qdict[(self.state), action] > current_Q:
         	current_Q = self.Qdict[(self.state), action]
@@ -88,10 +91,10 @@ class LearningAgent(Agent):
         
         
     def show_result(self):
-    	pass
-    	#numpy.savetxt('greedy_out.txt', numpy.transpose([numpy.array(self.ndeadline), \
-    	#numpy.array(self.tlist)]),  fmt='%2.1f', header = 'ndeadline,t', delimiter=',')
-    	#numpy.savetxt('greedy_out_rewards.txt', self.cum_rewards, fmt='%2.1f', header = 'rewards')
+    	#pass
+    	numpy.savetxt('greedy_out.txt', numpy.transpose([numpy.array(self.ndeadline), \
+    	numpy.array(self.tlist)]),  fmt='%2.1f', header = 'ndeadline,t', delimiter=',')
+    	numpy.savetxt('greedy_out_rewards.txt', self.cum_rewards, fmt='%2.1f', header = 'rewards')
     	
 
 def run():
@@ -105,10 +108,10 @@ def run():
     # NOTE: You can set enforce_deadline=False while debugging to allow longer trials
 
     # Now simulate it
-    sim = Simulator(e, update_delay=0.5, display=True)  # create simulator (uses pygame when display=True, if available)
+    sim = Simulator(e, update_delay=0.001, display=False)  # create simulator (uses pygame when display=True, if available)
     # NOTE: To speed up simulation, reduce update_delay and/or set display=False
     
-    sim.run(n_trials=1000)  # run for a specified number of trials
+    sim.run(n_trials=100)  # run for a specified number of trials
     # NOTE: To quit midway, press Esc or close pygame window, or hit Ctrl+C on the command-line
     a.show_result()
 
