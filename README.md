@@ -13,6 +13,7 @@ The Q-learning update rule is discussed [here](http://www.cs.rutgers.edu/~mlittm
 #Tools:
 
 + Pygame, random, numpy.
-+
+
+
 ### Note that I had to run simulation in Python3, since this is the simplest I could make Pygame to install!
 
