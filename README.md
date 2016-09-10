@@ -1,4 +1,4 @@
-# training-a-smartcab
+# Training A Smartcab
 
 ![Image](https://github.com/gmsardane/training-a-smartcab/blob/master/smartcab.gif)
 
