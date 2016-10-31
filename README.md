@@ -1,8 +1,6 @@
 # Training A Smartcab How to Drive
-
--> ![Image](https://github.com/gmsardane/training-a-smartcab/blob/master/smartcab.gif) <-
-
-
+<p align="center">
+![Image](https://github.com/gmsardane/training-a-smartcab/blob/master/smartcab.gif) </p>
 This project uses reinforcement Q-learning to train an agent to drive in a grid-like environment. 
 Based on rewards and penalties to simulate correct driving in the real-word. Environment parameters are:
 
