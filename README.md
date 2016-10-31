@@ -1,6 +1,6 @@
 # Training A Smartcab How to Drive
 
-![Image](https://github.com/gmsardane/training-a-smartcab/blob/master/smartcab.gif)
+<center> ![Image](https://github.com/gmsardane/training-a-smartcab/blob/master/smartcab.gif) </center>
 
 
 This project uses reinforcement Q-learning to train an agent to drive in a grid-like environment. 
